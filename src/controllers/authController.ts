@@ -22,7 +22,7 @@ export const login = async (req: Request, res: Response) => {
       return res.status(401).json({ message: 'Email ou senha inválidos' });
     }
 
-    const token = jwt.sign({ userId: user.id, role: user.role }, process.env.JWT_SECRET_KEY as string, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user.id, role: user.role }, process.env.JWT_SECRET_KEY as string, { expiresIn: '48h' });
     console.log('Token gerado:', token);
     res.status(200).json({ token });
   } catch (error) {
